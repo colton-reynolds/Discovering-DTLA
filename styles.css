@@ -12,3 +12,27 @@ body {
     font-weight: 600;
     font-style: italic;
 }
+
+.navbar-nav {
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 16px;
+    font-weight: medium;
+    letter-spacing: -1%;
+    display: flex; gap: 16px; 
+}
+
+.navbar-nav .nav-link.active {
+    position: relative;
+    padding-bottom: 0.35rem;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.35rem;
+    height: 4px;
+    background-color: #111;
+    border-radius: 999px;
+}
