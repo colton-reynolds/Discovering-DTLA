@@ -2,49 +2,215 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guide to the architecture, history, and culture of Downtown Los Angeles. Explore landmark buildings, museums, and neighborhoods in DTLA.">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fraunces">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Instrument Sans">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 
-    <title>Discovering DTLA</title>
-
+    <title>Discovering DTLA - Downtown Los Angeles Architecture and History Guide</title>
 </head>
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-expand-lg" id="header">
-        <div class="container">
-            <a class="navbar-brand" href="#" id="brand">Discovering DTLA</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Why DTLA</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Buildings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Entertainment</a>
-                    </li>                    
-                </ul>
+
+<body>
+
+
+    <header id="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+                <a class="navbar-brand" href="index.html" id="brand">
+                    <span class="brand-italic">Discovering</span> DTLA
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="buildings.html">Buildings</a></li>
+                        <li class="nav-item"><a class="nav-link" href="entertainment.html">Entertainment</a></li>
+                    </ul>
+                </div>
+
             </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+
+        <section class="hero">
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content">
+                <h1>Discovering the <span class="italic" id="italic-hero">beauty</span> of<br>Downtown Los Angeles</h1>
+
+                <p>Discover what many people miss. A guide to the beauty, architecture, and history of Downtown Los Angeles.</p>
+
+                <hr class="hero-line">
+            </div>
+        </section>
+
+
+        <section class="why-section">
+            <div class="container">
+
+                <p class="orange-label">Why Explore Downtown LA</p>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>A living record of<br><span class="italic">the city's growth.</span></h2>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p>Downtown Los Angeles is one of the city's oldest and most historically significant areas. It is home to government buildings, cultural institutions, public spaces, and architectural landmarks that reflect Los Angeles's growth, design, and identity over time.</p>
+
+                        <p>The area includes buildings that serve practical, civic, and cultural purposes while also showcasing distinctive materials, forms, and design features.</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <article class="col-md-4">
+                        <p class="number">01</p>
+                        <h3>Government & Civic</h3>
+                        <p>Courthouses, headquarters, and public buildings designed with intention and purpose.</p>
+                    </article>
+
+                    <article class="col-md-4">
+                        <p class="number">02</p>
+                        <h3>Cultural institutions</h3>
+                        <p>Museums, concert halls, and schools that anchor the area's cultural identity.</p>
+                    </article>
+
+                    <article class="col-md-4">
+                        <p class="number">03</p>
+                        <h3>Distinctive materials & form</h3>
+                        <p>From honeycomb facades to curved steel waves, design choices that reward a second look.</p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="buildings-section">
+            <div class="container">
+
+                <p class="orange-label">Buildings</p>
+
+                <h2>Downtown LA is home to landmarks that reveal the city's creativity, history, and design identity.</h2>
+
+                <hr>
+
+                <div class="row">
+                    <article class="col-md-6">
+                        <a href="buildings.html">
+                            <img src="img/the-broad-museum.jpg" alt="The Broad museum honeycomb exterior in Downtown Los Angeles" class="building-img">
+                        </a>
+                        <h3>The Broad</h3>
+                        <hr>
+                        <p>A contemporary museum known for its honeycomb exterior and soft filtered light.</p>
+                    </article>
+
+                    <article class="col-md-6">
+                        <a href="buildings.html">
+                            <img src="img/walt-disney-concert-hall.jpg" alt="Walt Disney Concert Hall curved metal exterior in Downtown Los Angeles" class="building-img">
+                        </a>
+                        <h3>Walt Disney Concert Hall</h3>
+                        <hr>
+                        <p>A sculptural landmark whose curved metal surfaces create movement and energy.</p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="explore-section">
+            <div class="container">
+
+                <p class="orange-label">More to Explore in Downtown LA</p>
+
+                <h2>Architecture is only part of the experience. Downtown LA also offers food, markets, nightlife, and cultural attractions.</h2>
+
+                <hr>
+
+                <div class="row">
+                    <article class="col-md-4">
+                        <a href="entertainment.html">
+                            <img src="img/grand-central-market.jpg" alt="Grand Central Market food hall in Downtown Los Angeles" class="explore-img">
+                        </a>
+                        <h3>Grand Central Market</h3>
+                        <hr>
+                        <p>A historic food hall filled with local flavors and city energy.</p>
+                    </article>
+
+                    <article class="col-md-4">
+                        <a href="entertainment.html">
+                            <img src="img/smorgasburg-la.jpg" alt="Smorgasburg LA open-air market in Downtown Los Angeles" class="explore-img">
+                        </a>
+                        <h3>Smorgasburg LA</h3>
+                        <hr>
+                        <p>An open-air market where food, shopping, and entertainment come together.</p>
+                    </article>
+
+                    <article class="col-md-4">
+                        <a href="entertainment.html">
+                            <img src="img/la-live.jpg" alt="LA Live entertainment venue at night in Downtown Los Angeles" class="explore-img">
+                        </a>
+                        <h3>LA Live</h3>
+                        <hr>
+                        <p>A vibrant downtown hub featuring sports, restaurants, and premier entertainment venues.</p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+    </main>
+
+
+    <footer>
+        <div class="container">
+
+            <h2>Keep <span class="italic orange">discovering.</span></h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-brand"><span class="italic">Discovering</span> DTLA</p>
+                    <p>A guide to the architecture, history, and life of Downtown Los Angeles.</p>
+                </div>
+
+                <nav class="col-md-6">
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="buildings.html">Buildings</a></li>
+                        <li><a href="entertainment.html">Entertainment</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-6"><p>© 2026 Discovering DTLA</p></div>
+                <div class="col-md-6 text-end"><p>Made in Los Angeles</p></div>
+            </div>
+
         </div>
-    </nav>
-<h1>Discovering DTLA</h1>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
