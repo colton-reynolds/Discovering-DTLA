@@ -224,3 +224,22 @@ footer hr {
 .footer-links a.active {
     border-bottom: 2px solid #E8A87C;
 }
+
+.entertainment-hero {
+    background-image: url('img/la-live-hero.jpg'); 
+}
+
+.grid-img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.entertainment-links a {
+    color: #C66B3D;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.entertainment-links a:hover {
+    text-decoration: underline;
+}
