@@ -225,13 +225,9 @@ footer hr {
     border-bottom: 2px solid #E8A87C;
 }
 
-.entertainment-hero {
-    background-image: url('img/la-live-hero.jpg'); 
-}
 
-.grid-img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+.entertainment-hero {
+    background-image: url('img/entertainmentheroimg.png'); 
 }
 
 .entertainment-links a {
