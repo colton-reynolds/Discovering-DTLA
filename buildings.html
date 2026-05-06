@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Buildings to notice in Downtown Los Angeles. From historic landmarks to modern icons, these buildings reveal the design, creativity, and identity of Downtown LA." />
+  <title>Buildings — Discovering DTLA</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Site stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Base ── */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #faf8f5;
+      color: #111;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background-color: rgba(17, 17, 17, 0.92) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff !important;
+      letter-spacing: 0.02em;
+    }
+
+    .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.75) !important;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.active {
+      border-bottom: 1px solid #d4703f;
+      padding-bottom: 2px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: zoomIn 12s ease-out forwards;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.00); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(17,17,17,0.75) 0%, rgba(17,17,17,0.15) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 3.5rem 3.5rem;
+      max-width: 760px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 em {
+      font-style: italic;
+      color: #e07a4a;
+    }
+
+    .hero-content p {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c45c2a;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Intro / "Why These Buildings Matter" ── */
+    .intro-section {
+      background-color: #f0ebe3;
+      padding: 5rem 3.5rem;
+    }
+
+    .intro-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .intro-section p {
+      font-size: 0.9rem;
+      color: #3a3a3a;
+      line-height: 1.8;
+    }
+
+    /* ── Buildings section ── */
+    .buildings-section {
+      background-color: #faf8f5;
+      padding: 5rem 3.5rem;
+    }
+
+    .buildings-section-header {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ddd9d3;
+      margin-bottom: 4rem;
+    }
+
+    .buildings-section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .buildings-section-header h2 em {
+      font-style: italic;
+    }
+
+    .sub-note {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    /* ── Building block ── */
+    .building-block {
+      border-top: 1px solid #ddd9d3;
+      padding: 4rem 0;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .building-block:last-of-type {
+      border-bottom: 1px solid #ddd9d3;
+    }
+
+    .building-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .building-location {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 0.3rem;
+    }
+
+    .building-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .detail-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c45c2a;
+      margin-bottom: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .detail-label:first-of-type {
+      margin-top: 0;
+    }
+
+    .building-desc {
+      font-size: 0.875rem;
+      color: #3a3a3a;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    /* ── Collage grid ── */
+    .collage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 5px;
+      height: 340px;
+    }
+
+    .collage-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .collage-grid img:first-child {
+      grid-row: 1 / 3;
+    }
+
+    /* Single tall image (for buildings with one photo) */
+    .collage-single {
+      height: 340px;
+    }
+
+    .collage-single img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Tours / CTA section ── */
+    .tours-section {
+      background-color: #f0ebe3;
+      padding: 5rem 3.5rem;
+      border-top: 1px solid #ddd9d3;
+    }
+
+    .tours-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .tours-section .lead-text {
+      font-size: 0.9rem;
+      color: #3a3a3a;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .tours-section .sub-text {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+
+    .tour-link {
+      display: block;
+      font-size: 0.875rem;
+      color: #c45c2a;
+      text-decoration: none;
+      padding: 0.2rem 0;
+      transition: opacity 0.2s;
+    }
+
+    .tour-link:hover {
+      opacity: 0.65;
+      color: #c45c2a;
+    }
+
+    .tour-link::before {
+      content: "→ ";
+      font-size: 0.8rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background-color: #1a1714;
+      color: rgba(255,255,255,0.55);
+      padding: 3.5rem 3.5rem 2.5rem;
+    }
+
+    .footer-top {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .footer-tagline em {
+      font-style: italic;
+      color: #e07a4a;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-desc {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      max-width: 240px;
+    }
+
+    .footer-nav a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: #fff; }
+
+    .footer-copy {
+      font-size: 0.75rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { height: 420px; }
+      .hero-content { padding: 0 1.5rem 2.5rem; }
+      .intro-section,
+      .buildings-section,
+      .tours-section { padding: 3.5rem 1.5rem; }
+      .collage-grid,
+      .collage-single { height: 220px; }
+      .building-block .col-md-6.ps-5,
+      .building-block .col-md-6.pe-5 { padding-left: 0 !important; padding-right: 0 !important; }
+      footer { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">Discovering DTLA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav gap-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#why-dtla">Why DTLA</a></li>
+          <li class="nav-item"><a class="nav-link active" href="buildings.html">Buildings</a></li>
+          <li class="nav-item"><a class="nav-link" href="entertainment.html">Entertainment</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <img class="hero-img" src="img/walt-disney-concert-hall.jpg" alt="Walt Disney Concert Hall and Downtown Los Angeles skyline" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Buildings to <em>notice</em> in<br>Downtown Los Angeles</h1>
+      <p>From historic landmarks to modern icons, these buildings reveal the design, creativity, and identity of Downtown LA.</p>
+    </div>
+  </section>
+
+  <!-- ── INTRO: Why These Buildings Matter ── -->
+  <section class="intro-section">
+    <div class="container-fluid px-0">
+      <div class="row g-5 align-items-start">
+        <div class="col-md-5">
+          <div class="section-label">Why These Buildings Matter</div>
+          <h2>Buildings that reveal the beauty of the city.</h2>
+        </div>
+        <div class="col-md-7 pt-2">
+          <p>Downtown Los Angeles is home to buildings that serve civic, cultural, and educational purposes while also showcasing distinctive forms, materials, and design choices. Together, they tell a story about the city and its character.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BUILDINGS ── -->
+  <section class="buildings-section">
+    <div class="container-fluid px-0">
+
+      <!-- Section header -->
+      <div class="buildings-section-header">
+        <div class="row g-4 align-items-end">
+          <div class="col-md-7">
+            <div class="section-label">Buildings</div>
+            <h2>What to see, and <em>what to notice</em> while you're there.</h2>
+          </div>
+          <div class="col-md-5">
+            <p class="sub-note">Each of these buildings carries details most visitors walk past. Here's where to begin.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. The Broad -->
+      <div class="building-block row g-0 align-items-center">
+        <div class="col-md-6">
+          <div class="collage-grid">
+            <img src="img/the-broad-museum.jpg" alt="The Broad museum honeycomb exterior" />
+            <img src="img/the-broad-museum.jpg" alt="The Broad interior gallery" style="object-position: right top;" />
+            <img src="img/the-broad-museum.jpg" alt="The Broad exterior detail" style="object-position: right bottom;" />
+          </div>
+        </div>
+        <div class="col-md-6 ps-5">
+          <div class="building-location">Bunker Hill &nbsp;·&nbsp; Contemporary Art Museum</div>
+          <h3 class="building-name">The Broad</h3>
+          <div class="detail-label">Why visit</div>
+          <p class="building-desc">The Broad is one of the most unique buildings in Downtown Los Angeles. Its exterior shell features a honeycomb pattern that softens sunlight entering the museum while also giving the building its distinctive look.</p>
+          <div class="detail-label">What to notice</div>
+          <p class="building-desc">The honeycomb exterior, the soft natural light, and the contrast between the open gallery spaces and the protected art storage inside.</p>
+        </div>
+      </div>
+
+      <!-- 2. Caltrans District 7 Headquarters -->
+      <div class="building-block row g-0 align-items-center">
+        <div class="col-md-6 pe-5 order-md-1 order-2">
+          <div class="building-location">Civic Center &nbsp;·&nbsp; Government Building</div>
+          <h3 class="building-name">Caltrans District 7 Headquarters</h3>
+          <div class="detail-label">Why visit</div>
+          <p class="building-desc">The Caltrans District 7 Headquarters stands out because its outer metal screen is not just decorative. It helps block harsh sunlight, lowers heat inside the building, and gives the outside a layered look that changes throughout the day.</p>
+          <div class="detail-label">What to notice</div>
+          <p class="building-desc">The metal outer layer, the shifting look of the building, and the way the design feels active and modern.</p>
+        </div>
+        <div class="col-md-6 order-md-2 order-1">
+          <div class="collage-grid">
+            <img src="img/walt-disney-concert-hall.jpg" alt="Caltrans District 7 Headquarters exterior" style="object-position: left;" />
+            <img src="img/the-broad-museum.jpg" alt="Caltrans metal screen detail" style="object-position: center top;" />
+            <img src="img/the-broad-museum.jpg" alt="Caltrans building facade" style="object-position: center bottom;" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Walt Disney Concert Hall -->
+      <div class="building-block row g-0 align-items-center">
+        <div class="col-md-6">
+          <div class="collage-grid">
+            <img src="img/walt-disney-concert-hall.jpg" alt="Walt Disney Concert Hall curved metal exterior" />
+            <img src="img/disney-hall.jpg" alt="Walt Disney Concert Hall detail" style="object-position: top;" />
+            <img src="img/disney-hall.jpg" alt="Walt Disney Concert Hall side view" style="object-position: bottom;" />
+          </div>
+        </div>
+        <div class="col-md-6 ps-5">
+          <div class="building-location">Bunker Hill &nbsp;·&nbsp; Concert Hall</div>
+          <h3 class="building-name">Walt Disney Concert Hall</h3>
+          <div class="detail-label">Why visit</div>
+          <p class="building-desc">Walt Disney Concert Hall is one of the most recognizable buildings in Los Angeles. Its curved metal surfaces resemble waves, giving the building a sense of movement and energy.</p>
+          <div class="detail-label">What to notice</div>
+          <p class="building-desc">The flowing shapes, the reflective metal surface, and the way the building looks different depending on where you stand.</p>
+        </div>
+      </div>
+
+      <!-- 4. Bradbury Building -->
+      <div class="building-block row g-0 align-items-center">
+        <div class="col-md-6 pe-5 order-md-1 order-2">
+          <div class="building-location">Broadway &nbsp;·&nbsp; Historic Office</div>
+          <h3 class="building-name">Bradbury Building</h3>
+          <div class="detail-label">Why visit</div>
+          <p class="building-desc">The Bradbury Building is one of the most historic and visually memorable buildings in Downtown Los Angeles. While the outside is fairly simple, the inside is full of character and detail.</p>
+          <div class="detail-label">What to notice</div>
+          <p class="building-desc">The open central space, the natural light from above, the iron railings, and the old fashioned elevators.</p>
+        </div>
+        <div class="col-md-6 order-md-2 order-1">
+          <div class="collage-grid">
+            <img src="img/the-broad-museum.jpg" alt="Bradbury Building exterior on Broadway" style="object-position: center;" />
+            <img src="img/walt-disney-concert-hall.jpg" alt="Bradbury Building iron atrium" style="object-position: top right;" />
+            <img src="img/the-broad-museum.jpg" alt="Bradbury Building interior light well" style="object-position: bottom right;" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. High School #9 -->
+      <div class="building-block row g-0 align-items-center">
+        <div class="col-md-6">
+          <div class="collage-grid">
+            <img src="img/the-broad-museum.jpg" alt="Central LA High School #9 exterior" style="object-position: center bottom;" />
+            <img src="img/disney-hall.jpg" alt="High School #9 number 9 detail" style="object-position: top;" />
+            <img src="img/disney-hall.jpg" alt="High School #9 Grand Avenue facade" style="object-position: bottom;" />
+          </div>
+        </div>
+        <div class="col-md-6 ps-5">
+          <div class="building-location">Grand Avenue &nbsp;·&nbsp; Visual &amp; Performing Arts</div>
+          <h3 class="building-name">High School #9</h3>
+          <div class="detail-label">Why visit</div>
+          <p class="building-desc">This school is a good example of how a building can reflect its purpose through design. One of its most interesting details is the large number 9 visible from above, which connects to the school's name and identity.</p>
+          <div class="detail-label">What to notice</div>
+          <p class="building-desc">Its bold shape, modern look, and the number 9 built into the design.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── TOURS ── -->
+  <section class="tours-section">
+    <div class="container-fluid px-0">
+      <div class="row g-5">
+        <div class="col-12 text-center mb-2">
+          <h2>Want to explore these buildings in person?</h2>
+          <p class="lead-text mx-auto" style="max-width: 620px;">Guided tours can help visitors experience Downtown Los Angeles more closely and notice the design details that are easy to miss.</p>
+        </div>
+        <div class="col-12 text-center">
+          <p class="sub-text">Visitors can also explore Downtown Los Angeles through guided tours. Here are a few options:</p>
+          <div class="d-flex flex-column align-items-center gap-1 mt-2">
+            <a class="tour-link" href="https://www.architecturetoursla.com/" target="_blank" rel="noopener">Architecture Tours L.A. — Downtown L.A. Tour</a>
+            <a class="tour-link" href="https://www.laconservancy.org/tours/historic-downtown-old-buildings-new-stories" target="_blank" rel="noopener">LA Conservancy — Historic Downtown: Old Buildings, New Stories</a>
+            <a class="tour-link" href="https://www.viator.com/tours/Los-Angeles/Downtown-Los-Angeles-History-and-Architecture-Walking-Tour/d645-5540DTLAARCH" target="_blank" rel="noopener">Downtown Los Angeles History and Architecture Walking Tour</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-top">
+      <div class="row align-items-start">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <div class="footer-tagline">Keep <em>discovering.</em></div>
+          <div class="footer-brand mb-1">Discovering DTLA</div>
+          <p class="footer-desc">A guide to the architecture, history, and life of Downtown Los Angeles.</p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-md-end align-items-start gap-4 footer-nav pt-1">
+          <a href="index.html">Home</a>
+          <a href="index.html#why-dtla">Why DTLA</a>
+          <a href="buildings.html">Buildings</a>
+          <a href="entertainment.html">Entertainment</a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between footer-copy">
+      <span>© 2026 Discovering DTLA</span>
+      <span>Made in Los Angeles</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scroll-reveal -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.building-block').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
