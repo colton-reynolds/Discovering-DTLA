@@ -201,75 +201,17 @@ article hr {
     background-position: center;
 }
 
-/* Intro "Why These Buildings Matter" */
-.building-page-intro-section {
-    background-color: #EAE3D6;
-    padding: 5rem 3.5rem;
-}
-
-.building-page-intro-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-.building-page-intro-section p {
-    font-size: 0.9rem;
-    color: #3a3a3a;
-    line-height: 1.8;
-}
-
 /* ── Buildings page building section ── */
 .buildings-page-section {
     background-color: #faf8f5;
     padding: 5rem 3.5rem;
 }
 
-.buildings-page-section-header {
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #ddd9d3;
-    margin-bottom: 4rem;
-}
-
-.buildings-page-detail-header {
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #ddd9d3;
-    margin-bottom: 4rem;
-}
-
-.buildings-page-section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-.buildings-page-section-header h2 em {
-    font-style: italic;
-}
 
 .sub-note {
     font-size: 0.85rem;
     color: #888;
     line-height: 1.7;
-}
-
-.building-page-location {
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #999;
-    margin-bottom: 0.3rem;
-}
-
-.building-page-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-    font-weight: 600;
-    line-height: 1.15;
-    margin-bottom: 1.25rem;
 }
 
 .detail-label {
@@ -284,13 +226,6 @@ article hr {
 
 .detail-label:first-of-type {
     margin-top: 0;
-}
-
-.building-page-desc {
-    font-size: 0.875rem;
-    color: #3a3a3a;
-    line-height: 1.8;
-    margin-bottom: 0;
 }
 
 footer {
